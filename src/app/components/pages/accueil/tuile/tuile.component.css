@@ -1,0 +1,32 @@
+.tuile{
+    margin: 10px;
+    gap: 10px;
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 7px;
+    transition-duration: 0.5s;
+}
+.tuile h3{
+    margin: 0;
+}
+
+.tuile:hover{
+    transform: scale(1.1);
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.panier-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.panier-container input{
+    width: 50px;
+    height: 20px;
+}

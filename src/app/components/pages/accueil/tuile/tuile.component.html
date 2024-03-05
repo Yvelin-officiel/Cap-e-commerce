@@ -1,0 +1,19 @@
+<div class="tuile">
+    <img [src]="article['Closet Image']" alt="{{ article.Name }}">
+    <div class="container">
+        <div class="data-container">
+            <h3>{{ article.Name }}</h3>
+            <p>Saison: {{ article['Seasonal Availability'] }}</p>
+            <p>Prix: {{ article.Buy }}</p>
+        </div>
+        <div class="panier-container">
+            <label for="quantite">Quantité:
+                <input type="number" id="quantite" [(ngModel)]="quantite" min="1">
+            </label>
+            <button *ngIf="article.Buy!=='NFS'" (click)="ajouterAuPanier()">Ajouter au panier</button>
+            <button *ngIf="estDansLePanier()" (click)="supprimerDuPanier()">Supprimer du panier</button>
+
+        </div>
+    </div>
+
+</div>

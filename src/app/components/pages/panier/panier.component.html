@@ -1,0 +1,18 @@
+<div *ngFor="let article of articlesPanier">
+    <div>
+      <h4>{{ article.article.name }}</h4>
+      <p>Quantité: {{ article.quantite }}</p>
+      <p>Prix unitaire: {{ article.article.price }}</p>
+      <p>Prix total: {{ article.article.totalPrice }}</p>
+      <input type="number" min="0" [(ngModel)]="article.quantite" (change)="modifierQuantite(article, value)" />
+      <button (click)="supprimerArticleDuPanier(article)">Supprimer</button>
+    </div>
+  </div>
+  
+  <div *ngIf="articlesPanier.length === 0">
+    <p>Votre panier est vide.</p>
+  </div>
+  
+  <button (click)="viderPanier()">Vider le panier</button>
+
+  <h2>Prix Total: {{ prixTotalPanier | currency: 'EUR' }}</h2>

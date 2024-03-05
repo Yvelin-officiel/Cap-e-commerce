@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticlePanier } from '../../../interfaces/ArticlePanier';
+import { ArticlePanier } from '../../../interfaces/IArticlePanier';
 import { PanierService } from '../../../services/panier/panier.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-panier',
   standalone: true,
-  imports:[FormsModule, CommonModule],
+  imports:[FormsModule, CommonModule, RouterLink, RouterOutlet],
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.css']
 })
@@ -21,12 +22,13 @@ export class PanierComponent implements OnInit {
 
   ngOnInit() {
     this.articlesPanier = this.panierService.recupererPanier();
-    this.prixTotalDuPanier
+    this.prixTotalDuPanier();
   }
 
   modifierQuantite(article: { article: ArticlePanier, quantite: number }, nouvelleQuantite: number) {
     article.quantite += nouvelleQuantite;
     article.article.totalPrice = article.quantite * article.article.price;
+    this.prixTotalDuPanier();
   }
 
   supprimerArticleDuPanier(article: { article: ArticlePanier, quantite: number }) {

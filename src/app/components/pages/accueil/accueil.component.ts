@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Article } from '../../../interfaces/Article';
+import { Article } from '../../../interfaces/IArticle';
 import { EcommerceServiceService } from '../../../services/ecommerceService.service';
 import { NgFor } from '@angular/common';
 import { TuileComponent } from './tuile/tuile.component';

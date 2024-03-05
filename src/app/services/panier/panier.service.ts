@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Article } from '../../interfaces/Article';
-import { ArticlePanier } from '../../interfaces/ArticlePanier';
+import { Article } from '../../interfaces/IArticle';
+import { ArticlePanier } from '../../interfaces/IArticlePanier';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class PanierService {
       name: article.Name,
       quantity: quantite,
       price: parseFloat(article.Buy),
-      totalPrice: parseFloat(article.Buy) * quantite
+      totalPrice: parseFloat(article.Buy) * quantite,
     };
 
     if (index === -1) {
@@ -25,6 +25,7 @@ export class PanierService {
     } else {
       // Cas 2 : Si une entrée existe déjà dans le panier, ajoute la quantité choisie en plus de l'existante
       this.panier[index].quantite += quantite;
+      this.panier[index].article.totalPrice += this.panier[index].article.price * quantite
     }
     this.calculerPrixTotal();
   }
@@ -46,6 +47,7 @@ export class PanierService {
     this.panier = [];
   }
 
+  
   calculerPrixTotal(): number {
     return this.panier.reduce((total, article) => total + article.article.totalPrice, 0);
   }

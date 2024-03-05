@@ -10,7 +10,7 @@
             <label for="quantite">Quantité:
                 <input type="number" id="quantite" [(ngModel)]="quantite" min="1">
             </label>
-            <button *ngIf="article.Buy!=='NFS'" (click)="ajouterAuPanier()">Ajouter au panier</button>
+            <button [disabled]="article.Buy==='NFS'" (click)="ajouterAuPanier()">Ajouter au panier</button>
             <button *ngIf="estDansLePanier()" (click)="supprimerDuPanier()">Supprimer du panier</button>
 
         </div>

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { PanierService } from '../../../../services/panier/panier.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Article } from '../../../../interfaces/Article';
+import { Article } from '../../../../interfaces/IArticle';
 
 @Component({
   selector: 'app-tuile',

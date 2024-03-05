@@ -1,1 +1,40 @@
-<p>checkout works!</p>
+<!-- checkout.component.html -->
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <label for="lastname">Nom:</label>
+    <input type="text" id="lastname" formControlName="lastname" required>
+  
+    <label for="firstname">Prénom:</label>
+    <input type="text" id="firstname" formControlName="firstname" required>
+  
+    <label for="adress">Adresse:</label>
+    <input type="text" id="adress" formControlName="adress" required>
+  
+    <label for="zipcode">Code Postal:</label>
+    <input type="text" id="zipcode" formControlName="zipcode" pattern="^\d{5}$" required>
+    <div *ngIf="checkoutForm.get('zipcode')!.hasError('pattern')">
+      Le code postal doit être composé de 5 chiffres.
+    </div>
+  
+    <label for="city">Ville:</label>
+    <input type="text" id="city" formControlName="city" required>
+  
+    <label for="card">Numéro de Carte:</label>
+    <input type="text" id="card" formControlName="card" pattern="^\d{16}$" required>
+    <div *ngIf="checkoutForm.get('card')!.hasError('pattern')">
+      Le numéro de carte doit être composé de 16 chiffres.
+    </div>
+  
+    <label for="cardDate">Date de Validité (MM/YY):</label>
+    <input type="text" id="cardDate" formControlName="cardDate" pattern="^\d{2}/\d{2}$" required>
+    <div *ngIf="checkoutForm.get('cardDate')!.hasError('pattern')">
+      La date de validité doit être au format MM/YY.
+    </div>
+    <div *ngIf="checkoutForm.get('cardDate')!.hasError('dateInvalide')">
+        La date de validité ne peut pas être antérieure à la date actuelle.
+      </div>
+  
+    <button type="submit" [disabled]="!checkoutForm.valid">Valider</button>
+    
+  </form>
+  
